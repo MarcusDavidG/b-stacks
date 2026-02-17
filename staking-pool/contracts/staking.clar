@@ -1,3 +1,3 @@
-;; Staking v25
+;; Staking v30
 
 (define-data-var total-staked uint u0)
