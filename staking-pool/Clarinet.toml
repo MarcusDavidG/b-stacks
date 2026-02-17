@@ -1,0 +1,5 @@
+[project]
+name = "staking-pool"
+
+[contracts.staking]
+path = "contracts/staking.clar"
