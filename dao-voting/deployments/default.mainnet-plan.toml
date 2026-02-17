@@ -1,0 +1,15 @@
+[network]
+name = "mainnet"
+deployment_fee_rate = 10
+
+[[network.accounts]]
+mnemonic = "$STACKS_MNEMONIC"
+balance = 100000000000
+
+[[plan.batches]]
+id = 0
+[[plan.batches.transactions]]
+contract-publish.contract-name = "dao"
+contract-publish.expected-sender = "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM"
+contract-publish.cost = 5000
+contract-publish.path = "contracts/dao.clar"

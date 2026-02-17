@@ -19,3 +19,29 @@
 ;; Data Maps
 (define-map stakes principal {amount: uint, lock-period: uint, timestamp: uint, rewards-earned: uint})
 (define-map pool-stats uint {total-stakers: uint, total-rewards-paid: uint, pool-performance: uint})
+(define-map delegations principal {delegate: principal, amount: uint, commission-rate: uint})
+(define-map validators principal {total-delegated: uint, commission-rate: uint, active: bool, reputation: uint})
+
+;; Delegation Functions
+(define-public (delegate-stake (validator principal) (amount uint))
+    (let ((current-stake (default-to {amount: u0, lock-period: u0, timestamp: u0, rewards-earned: u0} 
+                                   (map-get? stakes tx-sender))))
+        (asserts! (>= (get amount current-stake) amount) (err ERR-INSUFFICIENT-BALANCE))
+        (map-set delegations tx-sender {
+            delegate: validator,
+            amount: amount,
+            commission-rate: (get-validator-commission validator)
+        })
+        (update-validator-stats validator amount)
+        (ok true)))
+
+(define-read-only (get-validator-commission (validator principal))
+    (default-to u500 (get commission-rate (map-get? validators validator))))
+
+(define-private (update-validator-stats (validator principal) (amount uint))
+    (let ((current-stats (default-to {total-delegated: u0, commission-rate: u500, active: true, reputation: u100}
+                                   (map-get? validators validator))))
+        (map-set validators validator (merge current-stats {
+            total-delegated: (+ (get total-delegated current-stats) amount)
+        }))
+        (ok true)))
