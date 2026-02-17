@@ -1,3 +1,3 @@
-;; DAO v40
+;; DAO v45
 
 (define-constant owner tx-sender)
