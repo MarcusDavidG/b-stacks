@@ -1,0 +1,5 @@
+[project]
+name = "oracle-feed"
+
+[contracts.oracle]
+path = "contracts/oracle.clar"
