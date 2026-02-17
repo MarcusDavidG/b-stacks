@@ -2,6 +2,25 @@
 
 Five production-ready Stacks projects for mainnet deployment, featuring advanced DeFi, NFT, governance, and oracle functionality.
 
+## 🚀 Deployed Contracts
+
+### ✅ Live on Stacks Mainnet
+
+**DAO Voting System**
+- Contract: `SP3VD1Z3MGKB0MRPBH8DS1ZKXNGYW66NH5R6W74XP.dao`
+- Transaction: `0x139e8c69ac08f7f5150802ef6779a0ab30e471415ae2bcf3bad8439996e99aad`
+- Deployment Fee: 0.50 STX
+
+**NFT Marketplace**
+- Contract: `SP3VD1Z3MGKB0MRPBH8DS1ZKXNGYW66NH5R6W74XP.marketplace`
+- Transaction: `0x27a0af488918a9edd50099c31bd72de9c9f9b173f878989faaa2fc5005cdaae1`
+- Deployment Fee: 0.50 STX
+
+### 🔄 Remaining Deployments
+- Oracle Feed (`oracle.clar`)
+- Staking Pool (`staking.clar`)
+- Token Vault (`token-vault.clar`)
+
 ## 🚀 Projects Overview
 
 ### 1. **Staking Pool** - Advanced DeFi Staking
