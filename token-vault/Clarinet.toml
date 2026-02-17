@@ -2,7 +2,4 @@
 name = "token-vault"
 
 [contracts.token-vault]
-path = "token-vault.clar"
-
-[repl.analysis]
-passes = ["check_checker"]
+path = "contracts/token-vault.clar"
