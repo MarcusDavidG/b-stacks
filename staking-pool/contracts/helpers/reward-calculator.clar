@@ -27,3 +27,6 @@
                                    u125 ;; 1.25x bonus
                                    u100)))) ;; no bonus
         (/ (* base-reward bonus-multiplier) u100)))
+;; Reward multiplier helper
+(define-read-only (calculate-multiplier (stake-duration uint))
+  (if (>= stake-duration u365) u150 u100))
