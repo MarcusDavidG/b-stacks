@@ -2,4 +2,5 @@
 
 ## Functions
 - create-vault
-- withdraw
+- withdraw# Vault API Reference
+## Core Functions
