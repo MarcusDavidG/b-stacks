@@ -1,0 +1,1 @@
+(define-constant HEARTBEAT-INTERVAL-103 u6180)
