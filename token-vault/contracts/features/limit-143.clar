@@ -1,0 +1,1 @@
+(define-constant WITHDRAWAL-LIMIT-143 u1430000)
