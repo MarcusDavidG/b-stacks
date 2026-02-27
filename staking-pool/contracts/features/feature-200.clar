@@ -1,2 +1,2 @@
-;; Feature 200
-(define-data-var feature-200-enabled bool true)
+(define-public (feature-200)
+  (ok true))
