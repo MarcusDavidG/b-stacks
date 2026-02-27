@@ -1,0 +1,1 @@
+(define-constant QUORUM-THRESHOLD-115 u115000)
