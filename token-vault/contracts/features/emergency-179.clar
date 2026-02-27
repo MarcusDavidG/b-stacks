@@ -1,0 +1,1 @@
+(define-constant EMERGENCY-THRESHOLD-179 u895000)
