@@ -3,22 +3,22 @@
 cd /home/marcus/b-stacks
 
 PROJECTS=("staking-pool" "nft-marketplace" "token-vault" "oracle-feed" "dao-voting")
-TYPES=("states" "contexts" "sessions" "scopes" "environments" "configurations" "settings" "parameters" "options" "preferences")
+TYPES=("rewards" "penalties" "incentives" "bonuses" "fees" "commissions" "dividends" "yields" "returns" "profits")
 
 echo "Adding 1000 commits..."
 
 for i in {1..1000}; do
   PROJECT=${PROJECTS[$((i % 5))]}
   TYPE=${TYPES[$((i % 10))]}
-  NUM=$((i + 21900))
+  NUM=$((i + 20900))
   
   mkdir -p $PROJECT/contracts/$TYPE
-  cat > $PROJECT/contracts/$TYPE/state-$NUM.clar << EOF
-(define-data-var state-$NUM uint u$NUM)
-(define-read-only (get-state-$NUM) (var-get state-$NUM))
+  cat > $PROJECT/contracts/$TYPE/reward-$NUM.clar << EOF
+(define-public (reward-$NUM (recipient principal))
+  (ok (as-contract (stx-transfer? u$NUM tx-sender recipient))))
 EOF
   
-  git add . && git commit -m "feat($PROJECT): add $TYPE state $NUM" --quiet
+  git add . && git commit -m "feat($PROJECT): add $TYPE reward $NUM" --quiet
   
   if [ $((i % 100)) -eq 0 ]; then
     echo "Progress: $i/1000 commits"
