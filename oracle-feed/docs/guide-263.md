@@ -1,0 +1,18 @@
+# add balance verification Guide 263
+
+## Overview
+This guide covers add balance verification for the oracle-feed project.
+
+## Usage
+```clarity
+;; Example usage
+(contract-call? .oracle-feed add balance verification)
+```
+
+## Parameters
+- `value`: The input value (uint)
+- `caller`: The transaction sender (principal)
+
+## Returns
+- `(ok true)` on success
+- `(err uint)` on failure
