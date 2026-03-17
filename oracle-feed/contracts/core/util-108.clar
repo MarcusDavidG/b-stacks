@@ -1,0 +1,10 @@
+;; Utility module 108
+(define-constant CONTRACT-OWNER tx-sender)
+(define-constant ERR-NOT-AUTHORIZED (err u401))
+(define-data-var paused bool false)
+(define-data-var fee-rate uint u250)
+(define-data-var min-amount uint u1000000)
+(define-data-var contract-owner principal tx-sender)
+(define-public (transfer-ownership (new-owner principal))
+  (begin (asserts! (is-eq tx-sender CONTRACT-OWNER) ERR-NOT-AUTHORIZED)
+    (var-set contract-owner new-owner) (ok true)))
