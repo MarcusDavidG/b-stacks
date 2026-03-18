@@ -1,2 +1,2 @@
-(define-public (reward-21050 (recipient principal))
-  (ok (as-contract (stx-transfer? u21050 tx-sender recipient))))
+(define-public (reward-21050 (user principal) (amount uint))
+  (ok (+ amount u21050)))
