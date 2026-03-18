@@ -3,7 +3,7 @@
 cd /home/marcus/b-stacks
 
 PROJECTS=("staking-pool" "nft-marketplace" "token-vault" "oracle-feed" "dao-voting")
-TYPES=("rewards" "penalties" "incentives" "bonuses" "fees" "commissions" "dividends" "yields" "returns" "profits")
+TYPES=("rewards" "penalties" "incentives" "distributions" "allocations" "emissions" "yields" "dividends" "payouts" "rebates")
 
 echo "Adding 1000 commits..."
 
@@ -14,8 +14,8 @@ for i in {1..1000}; do
   
   mkdir -p $PROJECT/contracts/$TYPE
   cat > $PROJECT/contracts/$TYPE/reward-$NUM.clar << EOF
-(define-public (reward-$NUM (recipient principal))
-  (ok (as-contract (stx-transfer? u$NUM tx-sender recipient))))
+(define-public (reward-$NUM (user principal) (amount uint))
+  (ok (+ amount u$NUM)))
 EOF
   
   git add . && git commit -m "feat($PROJECT): add $TYPE reward $NUM" --quiet
