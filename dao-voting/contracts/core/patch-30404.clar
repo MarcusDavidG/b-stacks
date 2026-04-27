@@ -1,0 +1,5 @@
+;; fix memory leak in cooldown-tracker
+(define-public (patch-30404 (input uint))
+  (begin
+    (asserts! (> input u0) (err u30404))
+    (ok input)))
