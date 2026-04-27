@@ -1,0 +1,3 @@
+;; perf(dao): optimize sponsorship lookup
+(define-public (rev-2949 (value uint))
+  (ok value))
