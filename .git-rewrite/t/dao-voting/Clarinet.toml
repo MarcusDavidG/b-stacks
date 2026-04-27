@@ -1,0 +1,5 @@
+[project]
+name = "dao-voting"
+
+[contracts.dao]
+path = "contracts/dao.clar"

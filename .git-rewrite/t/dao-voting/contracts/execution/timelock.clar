@@ -1,0 +1,16 @@
+(define-constant TIMELOCK-DELAY u144) ;; ~1 day
+(define-constant ERR-TOO-EARLY (err u412))
+(define-constant ERR-ALREADY-EXECUTED (err u413))
+(define-map queued-txs (buff 32) { eta: uint, executed: bool })
+(define-public (queue-tx (tx-hash (buff 32)))
+  (begin
+    (map-set queued-txs tx-hash { eta: (+ block-height TIMELOCK-DELAY), executed: false })
+    (ok true)))
+(define-public (execute-tx (tx-hash (buff 32)))
+  (let ((tx (unwrap! (map-get? queued-txs tx-hash) (err u404))))
+    (asserts! (>= block-height (get eta tx)) ERR-TOO-EARLY)
+    (asserts! (not (get executed tx)) ERR-ALREADY-EXECUTED)
+    (map-set queued-txs tx-hash (merge tx { executed: true }))
+    (ok true)))
+(define-read-only (get-eta (tx-hash (buff 32)))
+  (map-get? queued-txs tx-hash))

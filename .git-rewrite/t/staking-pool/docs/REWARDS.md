@@ -1,0 +1,2 @@
+# Rewards Guide
+## Earning Rewards

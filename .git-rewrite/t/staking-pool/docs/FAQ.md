@@ -1,0 +1,2 @@
+# Staking FAQ
+## Common Questions

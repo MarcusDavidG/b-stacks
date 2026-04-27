@@ -1,0 +1,5 @@
+[project]
+name = "token-vault"
+
+[contracts.token-vault]
+path = "contracts/token-vault.clar"

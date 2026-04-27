@@ -4,91 +4,131 @@ cd /home/marcus/b-stacks
 
 PROJECTS=("staking-pool" "nft-marketplace" "token-vault" "oracle-feed" "dao-voting")
 
-TYPES=("feat" "fix" "perf" "refactor" "test" "docs" "chore")
-
-SCOPES=(
-  "staking" "nft" "vault" "oracle" "dao"
-  "security" "ui" "api" "tests" "docs"
-  "rewards" "governance" "compliance" "analytics" "integration"
+# Meaningful commit types with realistic descriptions
+declare -a COMMITS=(
+  "feat(staking): implement slashing conditions for validator misbehavior"
+  "feat(staking): add epoch-based reward distribution"
+  "feat(staking): implement stake weight calculation"
+  "fix(staking): correct overflow in reward accumulation"
+  "test(staking): add edge case tests for zero-balance stakes"
+  "feat(nft): implement reserve price for auctions"
+  "feat(nft): add bid history tracking per NFT"
+  "feat(nft): implement collection floor price oracle"
+  "fix(nft): resolve race condition in concurrent bids"
+  "test(nft): add auction expiry boundary tests"
+  "feat(vault): implement time-locked withdrawal queue"
+  "feat(vault): add multi-asset portfolio tracking"
+  "feat(vault): implement guardian approval workflow"
+  "fix(vault): correct rounding error in fee calculation"
+  "test(vault): add multisig threshold edge case tests"
+  "feat(oracle): implement outlier rejection algorithm"
+  "feat(oracle): add data freshness validation"
+  "feat(oracle): implement weighted median aggregation"
+  "fix(oracle): resolve stale price propagation bug"
+  "test(oracle): add consensus failure scenario tests"
+  "feat(dao): implement proposal cancellation by author"
+  "feat(dao): add vote weight decay over time"
+  "feat(dao): implement treasury spending proposals"
+  "fix(dao): correct quorum calculation for abstain votes"
+  "test(dao): add delegation cycle detection tests"
+  "perf(staking): reduce storage reads in reward calculation"
+  "perf(nft): batch metadata updates in single transaction"
+  "perf(vault): optimize multi-sig verification loop"
+  "perf(oracle): cache aggregated prices for one block"
+  "perf(dao): reduce map iterations in vote tallying"
+  "docs(staking): document slashing penalty parameters"
+  "docs(nft): add auction lifecycle diagram"
+  "docs(vault): document guardian recovery process"
+  "docs(oracle): explain weighted median algorithm"
+  "docs(dao): document conviction voting formula"
+  "refactor(staking): extract reward logic into helper"
+  "refactor(nft): simplify bid validation flow"
+  "refactor(vault): consolidate access control checks"
+  "refactor(oracle): unify data source interface"
+  "refactor(dao): extract proposal state machine"
+  "feat(staking): add minimum stake duration enforcement"
+  "feat(staking): implement validator commission rates"
+  "feat(staking): add stake snapshot for governance"
+  "feat(staking): implement unbonding period tracker"
+  "feat(staking): add protocol fee distribution"
+  "feat(nft): implement sealed-bid auction type"
+  "feat(nft): add NFT provenance tracking"
+  "feat(nft): implement collection royalty cap"
+  "feat(nft): add batch transfer functionality"
+  "feat(nft): implement offer expiration mechanism"
+  "feat(vault): add transaction memo support"
+  "feat(vault): implement vault activity log"
+  "feat(vault): add beneficiary designation"
+  "feat(vault): implement withdrawal whitelist"
+  "feat(vault): add vault migration tool"
+  "feat(oracle): implement circuit breaker for price feeds"
+  "feat(oracle): add oracle node registration"
+  "feat(oracle): implement data submission window"
+  "feat(oracle): add reward slashing for bad data"
+  "feat(oracle): implement price band validation"
+  "feat(dao): add proposal discussion period"
+  "feat(dao): implement vote delegation revocation"
+  "feat(dao): add emergency governance pause"
+  "feat(dao): implement proposal execution delay"
+  "feat(dao): add governance token snapshot"
+  "fix(staking): handle edge case when pool is empty"
+  "fix(staking): prevent double-claim of rewards"
+  "fix(staking): correct APY display for new stakers"
+  "fix(nft): prevent self-bidding on own NFTs"
+  "fix(nft): handle expired listings gracefully"
+  "fix(vault): prevent duplicate guardian addresses"
+  "fix(vault): correct fee deduction order"
+  "fix(oracle): handle missing data from one source"
+  "fix(oracle): prevent negative price submissions"
+  "fix(dao): fix vote count after delegation change"
+  "test(staking): test reward calculation over 1000 blocks"
+  "test(staking): verify unbonding period enforcement"
+  "test(nft): test sealed-bid reveal mechanism"
+  "test(nft): verify royalty distribution accuracy"
+  "test(vault): test guardian threshold changes"
+  "test(vault): verify time-lock enforcement"
+  "test(oracle): test circuit breaker activation"
+  "test(oracle): verify weighted median with outliers"
+  "test(dao): test conviction voting accumulation"
+  "test(dao): verify emergency pause functionality"
+  "docs(staking): add validator selection guide"
+  "docs(staking): document unbonding process"
+  "docs(nft): add sealed-bid auction guide"
+  "docs(nft): document provenance tracking"
+  "docs(vault): add beneficiary setup guide"
+  "docs(vault): document whitelist management"
+  "docs(oracle): add node operator guide"
+  "docs(oracle): document price band parameters"
+  "docs(dao): add emergency governance guide"
+  "docs(dao): document execution delay rationale"
+  "chore(staking): update contract version to v2.1"
+  "chore(nft): update marketplace fee structure"
+  "chore(vault): update guardian minimum threshold"
+  "chore(oracle): update data submission interval"
+  "chore(dao): update quorum percentage to 15%"
+  "feat(staking): implement cross-contract reward claims"
+  "feat(nft): add dynamic royalty based on sale price"
+  "feat(vault): implement spending category tags"
+  "feat(oracle): add on-chain data verification proof"
+  "feat(dao): implement ranked-choice voting"
 )
 
-ACTIONS=(
-  "add input validation to"
-  "improve error handling in"
-  "optimize gas usage in"
-  "add unit tests for"
-  "update documentation for"
-  "refactor logic in"
-  "fix edge case in"
-  "add event logging to"
-  "improve readability of"
-  "add null checks to"
-  "extract helper function from"
-  "add integration test for"
-  "update API docs for"
-  "add type annotations to"
-  "improve performance of"
-  "add retry logic to"
-  "fix off-by-one error in"
-  "add rate limiting to"
-  "improve test coverage for"
-  "add deprecation notice to"
-  "implement caching for"
-  "add circuit breaker to"
-  "improve logging in"
-  "add metrics tracking to"
-  "fix memory leak in"
-  "add overflow protection to"
-  "implement pagination for"
-  "add access control to"
-  "improve resilience of"
-  "add fallback logic to"
-  "fix race condition in"
-  "add timeout handling to"
-  "improve validation in"
-  "add audit trail to"
-  "fix precision error in"
-  "add batch processing to"
-  "improve scalability of"
-  "add health check for"
-  "fix concurrency issue in"
-  "add snapshot support to"
-)
-
-COMPONENTS=(
-  "reward-calculator" "stake-manager" "pool-registry" "delegation-handler" "cooldown-tracker"
-  "auction-engine" "bid-processor" "royalty-distributor" "collection-manager" "trait-resolver"
-  "vault-controller" "access-manager" "recovery-module" "compliance-engine" "spending-limiter"
-  "price-aggregator" "feed-validator" "data-scheduler" "reputation-tracker" "circuit-breaker"
-  "proposal-engine" "vote-counter" "quorum-checker" "treasury-manager" "conviction-tracker"
-  "flash-loan-handler" "liquidity-pool" "yield-optimizer" "risk-assessor" "slippage-guard"
-  "nft-indexer" "metadata-resolver" "rarity-calculator" "floor-price-tracker" "bid-escrow"
-  "multisig-coordinator" "timelock-executor" "batch-processor" "event-emitter" "key-manager"
-  "oracle-aggregator" "twap-calculator" "vwap-engine" "data-validator" "feed-subscriber"
-  "delegation-chain" "snapshot-manager" "escrow-handler" "grant-manager" "bounty-tracker"
-)
-
+TOTAL=${#COMMITS[@]}
 echo "Adding 1000 meaningful commits..."
 
-for i in $(seq 1 1000); do
+for i in {1..1000}; do
+  MSG="${COMMITS[$((i % TOTAL))]}"
   PROJECT=${PROJECTS[$((i % 5))]}
-  TYPE=${TYPES[$((i % 7))]}
-  SCOPE=${SCOPES[$((i % 15))]}
-  ACTION=${ACTIONS[$((i % 40))]}
-  COMPONENT=${COMPONENTS[$((i % 50))]}
-  NUM=$((i + 29900))
+  NUM=$i
 
-  DIR="$PROJECT/contracts/core"
-  mkdir -p $DIR
-  cat > $DIR/patch-$NUM.clar << EOF
-;; $ACTION $COMPONENT
-(define-public (patch-$NUM (input uint))
-  (begin
-    (asserts! (> input u0) (err u$NUM))
-    (ok input)))
+  mkdir -p $PROJECT/contracts/core
+  cat > $PROJECT/contracts/core/update-$NUM.clar << EOF
+;; $MSG
+(define-public (update-$NUM (value uint))
+  (ok value))
 EOF
 
-  git add . && git commit -m "$TYPE($SCOPE): $ACTION $COMPONENT" --quiet
+  git add . && git commit -m "$MSG (#$NUM)" --quiet
 
   if [ $((i % 100)) -eq 0 ]; then
     echo "Progress: $i/1000"

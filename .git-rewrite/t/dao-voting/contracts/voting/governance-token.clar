@@ -1,0 +1,13 @@
+(define-fungible-token governance-token)
+(define-constant CONTRACT-OWNER tx-sender)
+(define-constant ERR-NOT-AUTHORIZED (err u401))
+(define-public (mint (amount uint) (recipient principal))
+  (begin
+    (asserts! (is-eq tx-sender CONTRACT-OWNER) ERR-NOT-AUTHORIZED)
+    (ft-mint? governance-token amount recipient)))
+(define-public (transfer (amount uint) (sender principal) (recipient principal))
+  (ft-transfer? governance-token amount sender recipient))
+(define-read-only (get-balance (user principal))
+  (ft-get-balance governance-token user))
+(define-read-only (get-total-supply)
+  (ft-get-supply governance-token))

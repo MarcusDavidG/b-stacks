@@ -1,0 +1,125 @@
+{
+  "total_commits": 200,
+  "categories": {
+    "smart_contracts": {
+      "count": 40,
+      "tasks": [
+        "Add input validation to all public functions",
+        "Implement emergency pause mechanisms",
+        "Add event emissions for state changes",
+        "Optimize storage patterns",
+        "Add reentrancy guards",
+        "Implement access control modifiers",
+        "Add batch operation functions",
+        "Optimize gas usage in loops",
+        "Add contract upgrade patterns",
+        "Implement circuit breakers"
+      ]
+    },
+    "frontend": {
+      "count": 35,
+      "tasks": [
+        "Replace placeholder components with real implementations",
+        "Add wallet connection logic",
+        "Implement transaction status tracking",
+        "Add loading states and error handling",
+        "Create reusable UI components",
+        "Add responsive design improvements",
+        "Implement data visualization charts",
+        "Add form validation",
+        "Create notification systems",
+        "Add dark mode support"
+      ]
+    },
+    "testing": {
+      "count": 30,
+      "tasks": [
+        "Add unit tests for contract functions",
+        "Create integration test suites",
+        "Add edge case testing",
+        "Implement fuzz testing",
+        "Add performance benchmarks",
+        "Create security test cases",
+        "Add regression tests",
+        "Implement E2E tests",
+        "Add load testing",
+        "Create test utilities"
+      ]
+    },
+    "documentation": {
+      "count": 20,
+      "tasks": [
+        "Add API documentation",
+        "Create integration guides",
+        "Write deployment tutorials",
+        "Add code examples",
+        "Create architecture diagrams",
+        "Write security best practices",
+        "Add troubleshooting guides",
+        "Create contribution guidelines",
+        "Write upgrade guides",
+        "Add FAQ sections"
+      ]
+    },
+    "utilities": {
+      "count": 25,
+      "tasks": [
+        "Create CLI tools",
+        "Add helper functions",
+        "Implement data formatters",
+        "Create validation utilities",
+        "Add logging systems",
+        "Implement caching layers",
+        "Create migration scripts",
+        "Add monitoring tools",
+        "Implement backup utilities",
+        "Create deployment helpers"
+      ]
+    },
+    "security": {
+      "count": 20,
+      "tasks": [
+        "Add rate limiting",
+        "Implement access controls",
+        "Add input sanitization",
+        "Create audit logs",
+        "Implement signature verification",
+        "Add permission systems",
+        "Create security headers",
+        "Implement CSRF protection",
+        "Add encryption utilities",
+        "Create security monitoring"
+      ]
+    },
+    "optimization": {
+      "count": 15,
+      "tasks": [
+        "Optimize contract storage",
+        "Reduce gas costs",
+        "Implement caching",
+        "Optimize database queries",
+        "Add lazy loading",
+        "Implement code splitting",
+        "Optimize bundle sizes",
+        "Add memoization",
+        "Implement pagination",
+        "Optimize API calls"
+      ]
+    },
+    "features": {
+      "count": 15,
+      "tasks": [
+        "Add multi-signature support",
+        "Implement delegation features",
+        "Add notification systems",
+        "Create analytics dashboards",
+        "Implement search functionality",
+        "Add export features",
+        "Create admin panels",
+        "Implement webhooks",
+        "Add API versioning",
+        "Create plugin systems"
+      ]
+    }
+  }
+}

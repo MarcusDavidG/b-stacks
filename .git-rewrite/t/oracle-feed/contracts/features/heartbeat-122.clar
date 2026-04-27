@@ -1,0 +1,1 @@
+(define-constant HEARTBEAT-INTERVAL-122 u7320)

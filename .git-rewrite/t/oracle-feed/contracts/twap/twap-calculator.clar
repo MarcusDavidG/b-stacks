@@ -1,0 +1,15 @@
+(define-constant TWAP-WINDOW u50) ;; blocks
+(define-map price-history (string-ascii 10) (list 50 { price: uint, block: uint }))
+(define-public (record-price (asset (string-ascii 10)) (price uint))
+  (let ((history (default-to (list) (map-get? price-history asset)))
+        (new-entry { price: price, block: block-height }))
+    (map-set price-history asset
+      (unwrap-panic (as-max-len? (append history new-entry) u50)))
+    (ok true)))
+(define-read-only (get-twap (asset (string-ascii 10)))
+  (let ((history (default-to (list) (map-get? price-history asset)))
+        (len (len history)))
+    (if (is-eq len u0) (ok u0)
+      (ok (/ (fold + (map get-price-from-entry history) u0) len)))))
+(define-read-only (get-price-from-entry (entry { price: uint, block: uint }))
+  (get price entry))

@@ -1,0 +1,6 @@
+tree 7dca5f00c913402061b0866c4c83e571a27a3ff6
+parent ba9fc91bebf26d502baa99b7fa0897c4f8b90cc0
+author MarcusDavidG <davidmarcus827@gmail.com> 1777266103 +0100
+committer MarcusDavidG <davidmarcus827@gmail.com> 1777266103 +0100
+
+docs(governance): add integration test for metadata-resolver

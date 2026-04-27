@@ -1,0 +1,2 @@
+# Creator Guide
+## Minting NFTs

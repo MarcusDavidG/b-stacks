@@ -1,0 +1,2 @@
+# Integration Guide
+## Frontend Integration
