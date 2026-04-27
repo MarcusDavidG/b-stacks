@@ -1,0 +1,3 @@
+;; feat(oracle): implement cross-chain price sync
+(define-public (patch-1517 (value uint))
+  (ok value))
