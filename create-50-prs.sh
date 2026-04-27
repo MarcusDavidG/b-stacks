@@ -2,7 +2,7 @@
 
 cd /home/marcus/b-stacks
 
-TOKEN="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"
+TOKEN="GITHUB_TOKEN_REDACTED"
 REPO="MarcusDavidG/b-stacks"
 BASE="main"
 
